@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Battleship",
+    "size": 5,
+    "cellRepresentation": 1,
+    "emoji": "🚤"
+  },
+  {
+    "name": "Destroyer",
+    "size": 4,
+    "cellRepresentation": 1,
+    "emoji": "⛵"
+  }
+]
