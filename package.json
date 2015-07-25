@@ -1,0 +1,27 @@
+{
+  "name": "battleship-game",
+  "version": "1.0.0",
+  "description": "Terminal battleship game",
+  "main": "./bin/game.js",
+  "scripts": {
+    "test": ""
+  },
+  "bin": {
+    "battleship-game": "./bin/game.js"
+  },
+  "keywords": [
+    "battleship",
+    "game"
+  ],
+  "author": {
+    "name": "Ricardo Barros",
+    "email": "ricardofbarros@hotmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "semistandard": "^6.1.2"
+  },
+  "dependencies": {
+    "prompt": "^0.2.14"
+  }
+}
