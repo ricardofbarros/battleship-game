@@ -1,0 +1,10 @@
+{
+  "dimensions": {
+    "x": 10,
+    "y": 10
+  },
+  "insertUnits": {
+    "battleship": 1,
+    "destroyer": 2
+  }
+}
