@@ -1,12 +1,14 @@
 [
   {
-    "name": "Battleship",
+    "id": "battleship",
+    "label": "Battleship",
     "size": 5,
     "cellRepresentation": 1,
     "emoji": "🚤"
   },
   {
-    "name": "Destroyer",
+    "id": "destroyer",
+    "label": "Destroyer",
     "size": 4,
     "cellRepresentation": 1,
     "emoji": "⛵"
