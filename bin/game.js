@@ -3,50 +3,24 @@
 // Dependencies
 // var Board = require('../lib/Board');
 // var Units = require('../lib/Units');
-var inquirer = require('inquirer');
-var figlet = require('figlet');
-var pkg = require('../package.json');
-var Menu = require('terminal-menu');
+var Game = require('../lib/Game');
+var prompt = require('prompt');
 
-figlet('Battleship', { font: 'Larry 3D 2', horizontalLayout: 'fitted'}, function (err, data) {
-  if (err) {
-    console.log(err);
-    return;
-  }
+var game = new Game();
 
-  var greetings = data + 'v' + pkg.version;
-  greetings = greetings.split(/\r?\n/);
+game.on('start', function () {
+  // Start prompt
+  prompt.start();
 
-  var menu = Menu({ width: 100, x: 1, y: 2 });
-  menu.reset();
-
-  greetings.forEach(function (greeting) {
-    menu.write(greeting + '\n');
-  });
-  menu.write('\n');
-  menu.write('READY TO BOMB THE HELLOUT OF YOUR OPPONENT?\n');
-  menu.write('-------------------------------------------\n');
-
-  menu.add('START');
-  menu.add('OPTIONS');
-  menu.write('-------------------------------------------\n');
-  menu.add('EXIT');
-
-  menu.on('select', function (label) {
-    if (label === 'EXIT') {
-      menu.close();
-    }
+  prompt.get(['username', 'email'], function (err, result) {
+    //
+    // Log the results.
+    //
+    console.log('Command-line input received:');
+    console.log('  username: ' + result.username);
+    console.log('  email: ' + result.email);
   });
 
-  process.stdin
-    .pipe(menu.createStream())
-    .pipe(process.stdout);
-
-  process.stdin.setRawMode(true);
-  menu.on('close', function () {
-    process.stdin.setRawMode(false);
-    process.stdin.end();
-  });
 });
 
 
