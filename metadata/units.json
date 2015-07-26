@@ -1,16 +1,14 @@
-[
-  {
-    "id": "battleship",
+{
+  "battleship": {
     "label": "Battleship",
     "size": 5,
     "cellRepresentation": 1,
     "emoji": "🚤"
   },
-  {
-    "id": "destroyer",
+  "destroyer": {
     "label": "Destroyer",
     "size": 4,
     "cellRepresentation": 1,
     "emoji": "⛵"
   }
-]
+}
