@@ -8,7 +8,7 @@
   "destroyer": {
     "label": "Destroyer",
     "size": 4,
-    "cellRepresentation": 1,
+    "cellRepresentation": 2,
     "emoji": "⛵"
   }
 }
