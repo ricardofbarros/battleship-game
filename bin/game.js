@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 // Dependencies
-// var Board = require('../lib/Board');
-// var Units = require('../lib/Units');
 var Game = require('../lib/Game');
 var prompt = require('prompt');
 
@@ -11,22 +9,28 @@ var game = new Game();
 game.on('start', function () {
   // Start prompt
   prompt.start();
-
-  prompt.get(['username', 'email'], function (err, result) {
-    //
-    // Log the results.
-    //
-    console.log('Command-line input received:');
-    console.log('  username: ' + result.username);
-    console.log('  email: ' + result.email);
-  });
-
 });
 
+game.on('newRound', function () {
+  var schema = {
+    properties: {
+      attackPosition: {
+        pattern: /^[A-Z]{1}[0-9]{1,2}$/,
+        message: 'The position you want to bomb, of course!',
+        required: true
+      }
+    }
+  };
 
-// var board = new Board() // dimensions
-// var units = new Units() // must specify how many units and which
-//
-// units.export().forEach(function (unit) {
-//   board.addUnit(unit);
-// });
+  game.showBoard();
+  prompt.get(schema, function (err, result) {
+    if (err) {
+      throw new Error('Unexpected error, please restart the app');
+    }
+
+    game.bombPosition(result);
+
+    // Time to computer make its move
+    game.computerMove();
+  });
+});
