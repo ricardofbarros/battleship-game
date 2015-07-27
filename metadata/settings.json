@@ -3,7 +3,7 @@
     "x": 10,
     "y": 10
   },
-  "prettyBoard" : true,
+  "prettyBoard": true,
   "unitsQuantity": {
     "battleship": 1,
     "destroyer": 2
