@@ -6,9 +6,12 @@ var prompt = require('prompt');
 
 var game = new Game();
 
-game.on('start', function () {
+game.on('ready', function () {
   // Start prompt
   prompt.start();
+
+  // Start new round
+  game.emit('newRound');
 });
 
 game.on('newRound', function () {
