@@ -6,7 +6,7 @@ var SimpleAI = require('../lib/SimpleAI');
 var prompt = require('prompt');
 
 var game = new Game();
-var opponent = new SimpleAI(game);
+var opponent;
 
 game.on('ready', function () {
   // Start prompt
@@ -15,13 +15,11 @@ game.on('ready', function () {
   // Pass prompt instance to game instance
   game.prompt = prompt;
 
-  // Start new round
-  game.emit('newRound');
-});
+  // Create your opponent
+  opponent = new SimpleAI(game.settings);
 
-game.on('newRound', function () {
-  // Increment round count
-  game.roundCount++;
+  // lets get ready to rumbleeee!!
+  game.emit('changeTurn', game.turn);
 });
 
 game.on('changeTurn', function (turn) {
@@ -35,6 +33,6 @@ game.on('changeTurn', function (turn) {
   if (turn === 'human') {
     game.promptPlayerMove();
   } else {
-    opponent.play();
+    game.bombPosition(opponent.play());
   }
 });
