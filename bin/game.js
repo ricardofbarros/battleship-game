@@ -25,7 +25,7 @@ game.on('newRound', function () {
     }
   };
 
-  game.showBoard();
+  game.drawBoards();
   prompt.get(schema, function (err, result) {
     if (err || !result.attackPosition) {
       throw new Error('Unexpected error, please restart the app');
