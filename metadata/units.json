@@ -3,12 +3,12 @@
     "label": "Battleship",
     "size": 5,
     "cellRepresentation": 1,
-    "emoji": "🚤"
+    "emoji": "⛵"
   },
   "destroyer": {
     "label": "Destroyer",
     "size": 4,
     "cellRepresentation": 2,
-    "emoji": "⛵"
+    "emoji": "🚤"
   }
 }
