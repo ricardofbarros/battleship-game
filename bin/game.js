@@ -2,38 +2,39 @@
 
 // Dependencies
 var Game = require('../lib/Game');
+var SimpleAI = require('../lib/SimpleAI');
 var prompt = require('prompt');
 
 var game = new Game();
+var opponent = new SimpleAI();
 
 game.on('ready', function () {
   // Start prompt
   prompt.start();
+
+  // Pass prompt instance to game instance
+  game.prompt = prompt;
 
   // Start new round
   game.emit('newRound');
 });
 
 game.on('newRound', function () {
-  var schema = {
-    properties: {
-      attackPosition: {
-        pattern: /^[a-zA-Z]{1}[0-9]{1,2}$/,
-        message: 'The position you want to bomb, of course!',
-        required: true
-      }
-    }
-  };
+  // Increment round count
+  game.roundCount++;
+});
 
+game.on('changeTurn', function (turn) {
+  // Change the turn in
+  // the game instance
+  game.turn = turn;
+
+  // draw/re-draw boards
   game.drawBoards();
-  prompt.get(schema, function (err, result) {
-    if (err || !result.attackPosition) {
-      throw new Error('Unexpected error, please restart the app');
-    }
 
-    game.bombPosition(result.attackPosition);
-
-    // Time to computer make its move
-    game.computerMove();
-  });
+  if (turn === 'human') {
+    game.promptPlayerMove();
+  } else {
+    opponent.play();
+  }
 });
