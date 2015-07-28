@@ -27,11 +27,11 @@ game.on('newRound', function () {
 
   game.showBoard();
   prompt.get(schema, function (err, result) {
-    if (err) {
+    if (err || !result.attackPosition) {
       throw new Error('Unexpected error, please restart the app');
     }
 
-    game.bombPosition(result);
+    game.bombPosition(result.attackPosition);
 
     // Time to computer make its move
     game.computerMove();
