@@ -6,7 +6,7 @@ var SimpleAI = require('../lib/SimpleAI');
 var prompt = require('prompt');
 
 var game = new Game();
-var opponent = new SimpleAI();
+var opponent = new SimpleAI(game);
 
 game.on('ready', function () {
   // Start prompt
