@@ -18,7 +18,7 @@ game.on('newRound', function () {
   var schema = {
     properties: {
       attackPosition: {
-        pattern: /^[A-Z]{1}[0-9]{1,2}$/,
+        pattern: /^[a-zA-Z]{1}[0-9]{1,2}$/,
         message: 'The position you want to bomb, of course!',
         required: true
       }
