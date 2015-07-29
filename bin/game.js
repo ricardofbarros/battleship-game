@@ -19,7 +19,26 @@ game.on('ready', function () {
   opponent = new SimpleAI(game.settings);
 
   // lets get ready to rumbleeee!!
-  game.emit('changeTurn', game.turn);
+  game.emit('newRound', game.turn);
+});
+
+game.on('newRound', function (turn) {
+  // Keep track of rounds played
+  game.roundsCounter++;
+
+  // First clean the screen
+  game.cleanScreen();
+
+  // draw/re-draw game stuff
+  game.drawBoards();
+  game.drawNewLine();
+
+  // If the game is already in play
+  if (game.roundsCounter > 1) {
+    game.drawLastAttackReport();
+  }
+
+  game.emit('changeTurn', turn);
 });
 
 game.on('changeTurn', function (turn) {
@@ -27,12 +46,17 @@ game.on('changeTurn', function (turn) {
   // the game instance
   game.turn = turn;
 
-  // draw/re-draw boards
-  game.drawBoards();
-
   if (turn === 'human') {
     game.promptPlayerMove();
   } else {
     game.bombPosition(opponent.play());
   }
+});
+
+game.on('finish', function () {
+  // Clean screen
+  game.cleanScreen();
+
+  // Announce the winner!!
+  game.announceWinner();
 });
