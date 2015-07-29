@@ -16,7 +16,7 @@ game.on('ready', function () {
   game.prompt = prompt;
 
   // Create your opponent
-  opponent = new SimpleAI(game.settings);
+  opponent = new SimpleAI(game.settings, game.history);
 
   // lets get ready to rumbleeee!!
   game.emit('newRound', game.turn);
