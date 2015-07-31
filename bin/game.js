@@ -2,11 +2,11 @@
 
 // Dependencies
 var Game = require('../lib/Game');
-var SimpleAI = require('../lib/SimpleAI');
+var Npc = require('../lib/Npc');
 var prompt = require('prompt');
 
 var game = new Game();
-var opponent;
+var npc;
 
 game.on('ready', function () {
   // Start prompt
@@ -16,7 +16,7 @@ game.on('ready', function () {
   game.prompt = prompt;
 
   // Create your opponent
-  opponent = new SimpleAI(game.settings, game.history);
+  npc = new Npc(game.settings, game.history);
 
   // lets get ready to rumbleeee!!
   game.emit('newRound', game.turn);
@@ -49,7 +49,7 @@ game.on('changeTurn', function (turn) {
   if (turn === 'human') {
     game.promptPlayerMove();
   } else {
-    game.bombPosition(opponent.play());
+    game.bombPosition(npc.play());
   }
 });
 
