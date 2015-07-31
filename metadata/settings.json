@@ -4,6 +4,7 @@
     "y": 10
   },
   "prettyBoard": true,
+  "trackEnemyMisses": false,
   "unitsQuantity": {
     "battleship": 1,
     "destroyer": 2
