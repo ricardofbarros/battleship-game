@@ -1,6 +1,6 @@
 # Battleship game  
 
-## Installation & Start the game
+## Installation & Game start
 
 ```bash
 npm i battleship-game -g
