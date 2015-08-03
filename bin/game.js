@@ -23,6 +23,23 @@ game.on('ready', function () {
 });
 
 game.on('newRound', function (turn) {
+  var checkWinnerHuman, checkWinnerNpc;
+
+  checkWinnerNpc = game.human.units.gameUnits.every(function (unit) {
+    return !unit.state;
+  });
+  if (!checkWinnerNpc) {
+    checkWinnerHuman = game.npc.units.gameUnits.every(function (unit) {
+      return !unit.state;
+    });
+
+    if (checkWinnerHuman) {
+      return game.emit('finish', 'player');
+    }
+  } else {
+    return game.emit('finish', 'computer');
+  }
+
   // Keep track of rounds played
   game.roundsCounter++;
 
@@ -53,10 +70,9 @@ game.on('changeTurn', function (turn) {
   }
 });
 
-game.on('finish', function () {
+game.on('finish', function (winner) {
   // Clean screen
   game.cleanScreen();
 
-  // Announce the winner!!
-  game.announceWinner();
+  return game.announceWinner(winner);
 });
