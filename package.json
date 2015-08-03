@@ -9,6 +9,13 @@
   "bin": {
     "battleship-game": "./bin/game.js"
   },
+  "bugs": {
+    "url": "https://github.com/ricardofbarros/battleship-game/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ricardofbarros/battleship-game.git"
+  },
   "keywords": [
     "battleship",
     "game"
