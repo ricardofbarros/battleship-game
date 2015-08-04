@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+// Workaround for node@ <= 0.10
+if (typeof global.Map === 'undefined') {
+  global.Map = require('hashmap');
+  global.Map.prototype.delete = Map.prototype.remove;
+}
+
 // Dependencies
 var Game = require('../lib/Game');
 var Npc = require('../lib/Npc');
