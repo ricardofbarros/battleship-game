@@ -9,12 +9,13 @@ battleship-game
 ```
 
 > If you don't want to install this game globally you can do the following:
-
+>
 > ```
-git clone https://github.com/ricardofbarros/battleship-game.git
-cd battleship-game
-node bin/game.js
-```
+> git clone https://github.com/ricardofbarros/battleship-game.git
+> cd battleship-game
+> node bin/game.js
+>```
+
 
 ## In game screens
 ![game2](https://cloud.githubusercontent.com/assets/6867996/9029011/08563bb8-3983-11e5-948a-9d16b547c448.png)
